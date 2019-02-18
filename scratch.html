@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+ 
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>  
+
+<script>
+    // If the count down is over, write some text 
+// Starts the game 
+$(".start").on("click", function (){
+    // Questions appear
+            $('.wrapper').show();
+    
+            $(this).hide();
+        });
+    
+var x = setInterval(function() {
+var game = {
+    questions: [
+    {
+           question: 'Name the fourth member of a Tribe Called Quest?',
+           possibles: ['Busta Rhymes', 'Trugoy', 'Jarrobi', 'C L Smooth', 'Common'],
+           id: 'question-one',
+           answer: 2
+    }, {
+        question: 'Who is a rapper in Black Star?',
+        possibles: ['Black Thought', 'Mos Def', 'Common', 'Hi-Tek', 'Pharoah Monch'],
+        id: 'question-two',
+        answer: 1
+    }, {
+        question: 'What town is in Queens, NY?',
+        possibles: ['Rosedale', 'BedStuy', 'East NY', 'Canarsie', 'Cypress Hills'],
+        id: 'question-three',
+        answer: 0
+    }, {
+        question: 'What street did A Tribe Called Quest make famous?',
+        possibles: ['Hollis Ave.', 'Springfield Blvd.', 'Merrick Blvd.', 'Linden Blvd.', 'Jamaica Ave.'],
+        id: 'question-four',
+        answer: 3
+    }, {
+        question: 'What crew did LL Cool J make famous?',
+        possibles: ['Farmers', 'Far Rockaway', 'Hollis', 'Forty Projects', 'Jamaica'],
+        id: 'question-five',
+        answer: 0
+    }
+    ]}
+    
+// Calculate seconds
+var start = new Date;
+setInterval(function() {
+    $('.Timer').text((new Date - start) / 1000 + " Seconds");
+}, 1000);
+// Output the time left with id="demo"
+document.getElementById("demo").innerHTML = seconds + "s ";
+    // If the count down is over, write some text 
+$(function () {
+$('#defaultCountdown').countdown({
+    until: +5,
+    onExpiry: function() {
+      $('#defaultCountdown').css("background-color","red");
+      $('#defaultCountdown').html('<div class="over">Time\'s up!</div>');
+    },});
+function run(){
+    counter = setInterval(decrement, 1000);
+}
+// The stop function
+function stop(){
+// Clears our "counter" interval. The interval name is passed to the clearInterval function.
+    clearInterval(counter);
+}
+
+// Execute the run function.
+run();
+})})
+</script>
+</body>
+</html>
+
+
+//// BELOW: MORE SCRATCH:
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<!-- <script src="javascript/triviagame.js"></script> -->
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+    
+    var apiEasyMusic = "https://opentdb.com/api.php?amount=15&category=12&difficulty=easy&type=multiple";
+    var apiEasyGeography = "https://opentdb.com/api.php?amount=15&category=11&difficulty=easy&type=multiple";
+    var apiHardMusic = "https://opentdb.com/api.php?amount=15&category=9&difficulty=easy&type=multiple";
+    
+    function ajaxPull() {
+        $.ajax({url: queryURL, method: "GET" }).then(function(response) {
+        var jString = JSON.stringify(response);
+        var masterObj = JSON.parse(jString);
+    
+        // var objectQ = masterObj[1];
+        console.log("object is: " + response.results[0].category);
+    
+        console.log("CONTENTS OF response: " + response.results[0].question); 
+    
+        for (var x in response.results) {
+        console.log("CONTENTS OF response: " + response.results[x].question);    
+        }
+        });
+        quizTime(masterObj);
+    }
+    
+    function quizTime(objectGoesHere) {
+        var quizObject = objectGoesHere;
+    
+    };
+    
+    /// var apiURL = BUTTON CAPTURE VALUE 
+    
+    ajaxPull(apiURL);
+    
+        // console.log("" + objectQ);
+        // console.log("" + objectQ);
+    });
+    
+    
+    </script>
+    
+    </body>
+    </html>
+    
+    
+    
+    
+    
+    
+    var questions = [{q1,q2,q3,q4}, {q1,q2,q3,q4}];
+    var corrects = [answer, answer, answer];
+    
+    
+    if userAnswer.includes(corrects) {
+        var displayCorrect = corrects.indexOf(userAnswer);
+        displayAns(displayCorrect);

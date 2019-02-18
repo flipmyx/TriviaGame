@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Anton|Coiny|Libre+Barcode+39+Text|Montserrat" rel="stylesheet">
+    <style>
+        /* font-family: 'Libre Barcode 39 Text', cursive;
+        font-family: 'Coiny', cursive;
+        font-family: 'Montserrat', sans-serif;
+        font-family: 'Anton', sans-serif; */
+    .barcodefont {
+        font-family: 'Libre Barcode 39 Text', cursive;
+    }
+    .jeopardyfont {
+        font-family: 'Anton', sans-serif;
+    }
+    
+    </style>
+</head>
+<body>
+    
+<div class="container">
+
+    <div class="row">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-3 text-center barcodefont">Trivi<span style="color: blue;">a</span>ly</h1>
+                <p class="lead jeopardyfont">The trivia game for those who love <span style="color: blue;">JEOPARDY!</span>-ish trivia games!</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8 col-md-10 text-center">
+            <h2 id="category"></h2>
+            <h2 id="question"></h2>
+            <h2 id="correct"></h2>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- <script src="javascript/triviagame.js"></script> -->
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+var apiEasyMusic = "https://opentdb.com/api.php?amount=15&category=12&difficulty=easy&type=multiple";
+var apiEasyGeography = "https://opentdb.com/api.php?amount=15&category=11&difficulty=easy&type=multiple";
+var apiHardMusic = "https://opentdb.com/api.php?amount=15&category=9&difficulty=easy&type=multiple";
+
+function ajaxPull() {
+    $.ajax({url: queryURL, method: "GET" }).then(function(response) {
+    var jString = JSON.stringify(response);
+    var masterObj = JSON.parse(jString);
+
+    // var objectQ = masterObj[1];
+    console.log("object is: " + response.results[0].category);
+
+    console.log("CONTENTS OF response: " + response.results[0].question); 
+
+    for (var x in response.results) {
+    console.log("CONTENTS OF response: " + response.results[x].question);    
+    }
+    });
+    quizTime(masterObj);
+}
+
+function quizTime(objectGoesHere) {
+    var quizObject = objectGoesHere;
+
+};
+
+/// var apiURL = BUTTON CAPTURE VALUE 
+
+ajaxPull(apiURL);
+
+    // console.log("" + objectQ);
+    // console.log("" + objectQ);
+});
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+var questions = [{q1,q2,q3,q4}, {q1,q2,q3,q4}];
+var corrects = [answer, answer, answer];
+
+
+if userAnswer.includes(corrects) {
+    var displayCorrect = corrects.indexOf(userAnswer);
+    displayAns(displayCorrect);
+}
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+    
+    var apiEasyMusic = "https://opentdb.com/api.php?amount=15&category=12&difficulty=easy&type=multiple";
+    var apiEasyGeography = "https://opentdb.com/api.php?amount=15&category=11&difficulty=easy&type=multiple";
+    var apiHardMusic = "https://opentdb.com/api.php?amount=15&category=9&difficulty=easy&type=multiple";
+    
+    function ajaxPull() {
+        $.ajax({url: queryURL, method: "GET" }).then(function(response) {
+        var jString = JSON.stringify(response);
+        var masterObj = JSON.parse(jString);
+    
+        // var objectQ = masterObj[1];
+        console.log("object is: " + response.results[0].category);
+    
+        console.log("CONTENTS OF response: " + response.results[0].question); 
+    
+        for (var x in response.results) {
+        console.log("CONTENTS OF response: " + response.results[x].question);    
+        }
+        });
+        quizTime(masterObj);
+    }
+    
+    function quizTime(objectGoesHere) {
+        var quizObject = objectGoesHere;
+    
+    };
+    
+    /// var apiURL = BUTTON CAPTURE VALUE 
+    
+    ajaxPull(apiURL);
+    
+        // console.log("" + objectQ);
+        // console.log("" + objectQ);
+    });
+    
+    
+    </script>
+    
+    </body>
+    </html>
+    
+    
+    
+    
+    
+    
+    var questions = [{q1,q2,q3,q4}, {q1,q2,q3,q4}];
+    var corrects = [answer, answer, answer];
+    
+    
+    if userAnswer.includes(corrects) {
+        var displayCorrect = corrects.indexOf(userAnswer);
+        displayAns(displayCorrect);
