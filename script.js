@@ -238,7 +238,7 @@ function getWrongAns() {
     $("#startButton").click(function() {
         console.log("start button clicked");
         startCountdown();
-        setTimeout(timesUp, 36000);
+        setTimeout(timesUp, 361000);
         $("#startButton").hide('slow');
         $("#biglogo").hide();
         $("#clock").removeClass('d-none');
