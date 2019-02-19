@@ -25,7 +25,7 @@ function count() {
   // DONE: Get the current time, pass that into the timeConverter function,
   //       and save the result in a variable.
   var converted = timeConverter(time);
-  console.log(converted);
+  // console.log(converted);
 
   // DONE: Use the variable we just created to show the converted time in the "display" div.
   $("#clock").text(converted);

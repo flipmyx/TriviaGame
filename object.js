@@ -121,6 +121,40 @@ var questions = [
     }
 ];
 
+function getCorrectAns() {
+    var corrects = questions.map(function (cards) {
+        return cards.correct_answer;
+    });
+    return corrects;
+}
+
+function getWrongAns() {
+    var wrongs = questions.map(function (cards) {
+        return cards.incorrect_answers;
+    });
+    return wrongs;
+}
+
+var correctAns = getCorrectAns();
+var wrongAns = getWrongAns();
+
+  
+    
+console.log("correctAns after getQuestions() is: " + correctAns);
+console.log("wrong answers are: " + wrongAns[3]);
+
+console.log("whats questions[9].type: " + questions[9].type);
+
+
+questions[9].choices = questions[9].incorrect_answers;
+questions[9].choices.push(questions[9].correct_answer);
+
+
+console.log("whats in questions[9].choices: " + questions[9].choices);
+userAnswer = questions[9].correct_answer;
+console.log(userAnswer);
+// console.log(questions[9].choices(includes(correctAns[9])));
+console.log("correctAns[9] is: " + correctAns[9]);
 
 
 

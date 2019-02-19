@@ -19,19 +19,17 @@
         font-family: 'Anton', sans-serif;
     }
     
-    /* .btn-block {
-    padding: 10% 0; 
-    } */
+
     .fontR {
         font-size: 2rem;
     }
     .fontL {
         font-size: 4rem;
     }
-/* 
+
     .fontXL {
         font-size: 6rem;
-    } */
+    }
 
     </style>
 </head>
@@ -46,15 +44,19 @@
                 <p class="lead jeopardyfont text-center">The trivia game for those who love <span style="color: blue;">JEOPARDY!</span>-ish trivia games!</p>
                 <br>
                 <br>
-                <div id="startButton"></div>
-                <div id="displayArea">
-                    <div id="clock" class="bg-dark text-white barcodefont fontL text-center">06-01</span></div>
-                    <div id="questionCard" class="fontL">
-                        <div id="questions"></div>
-                    </div>
-                    <div id="gameOver" class="fontL"></div>
+                <div id="startButton">
+                    <button class="btn btn-outline-success btn-lg btn-block barcodefont fontL startbutton" style="padding: 10% 0">LETS GET STARTED</button>
                 </div>
-                
+
+                <div id="displayArea" >
+                    <div id="clock" class="sticky-top bg-dark text-white barcodefont fontL text-center">06-01
+                    </div>
+                    <div id="questionCard" class="fontL">
+                        <div id="questions" class=" d-none"></div>
+                    </div>
+                </div>
+                <div id="gameOver" class="bg-danger text-white barcodefont fontL jeopardyfont text-center d-none">Times Up!
+                </div>
             </div>
         </div>
     </div>
