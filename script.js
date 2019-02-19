@@ -121,12 +121,12 @@ var questions = [
     }
 ];
 
-function getCorrectAns() {
-    var corrects = questions.map(function (cards) {
+
+var corrects = questions.map(function (cards) {
         return cards.correct_answer;
     });
-    return corrects;
-}
+console.log(corrects);
+
 
 function getWrongAns() {
     var wrongs = questions.map(function (cards) {
@@ -135,94 +135,90 @@ function getWrongAns() {
     return wrongs;
 }
 
-var correctAns = getCorrectAns();
-var wrongAns = getWrongAns();
-
-  
-    
-console.log("correctAns after getQuestions() is: " + correctAns);
-console.log("wrong answers are: " + wrongAns[3]);
-
-console.log("whats questions[9].type: " + questions[9].type);
-
-
-questions[9].choices = questions[9].incorrect_answers;
-questions[9].choices.push(questions[9].correct_answer);
-
-
-console.log("whats in questions[9].choices: " + questions[9].choices);
-userAnswer = questions[9].correct_answer;
-console.log(userAnswer);
-// console.log(questions[9].choices(includes(correctAns[9])));
-console.log("correctAns[9] is: " + correctAns[9]);
-
-
-
 
 
 // $(document).ready(function() {
 
     var correctTally = 0;
     var wrongTally = 0;
-    var winTally = 0;
-    var loseTally = 0;
+    var questionsLeft = 10;
     var questionNum = 0;
     
-    var isRight = correctAns[9].includes(userAnswer);
 
-    function rightOrWrong(rightOrWrong) {
-        if (rightOrWrong) {
-            console.log("Correct Tally: " + correctTally);
-            console.log("Correct!");   
-            correctTally++;
-            console.log("Correct Tally: " + correctTally);
-        } else {
-            console.log("Wrong Tally: " + wrongTally);
-            console.log("Wrong!");   
-            wrongTally++;
-            console.log("Wrong Tally: " + wrongTally);
-        }
-    }
 
-    // function startButton() {    
-    //     var buttonz = $("<button>");
-    //     buttonz.addClass("btn btn-outline-success btn-lg btn-block barcodefont fontL startbutton");
-    //     buttonz.attr("style", "padding: 10% 0");
-    //     buttonz.text("LETS GET STARTED");
-    //     $("#startButton").append(buttonz);
-    // };
+    function checkAnswer(answered) {        
+            console.log("checkAnswer() answered is: " + answered);
+            letsee = corrects.includes(answered);
+            console.log("letsee is: " + letsee);
+            if (letsee === true) {
+                console.log("Correct!");
+                correctTally++;
+                console.log("correctTally: " + correctTally);
+                console.log("wrongTally: " + wrongTally);          
+                questionNum++;
+                console.log("questionNum");
+                questionCard(questionNum);
+
+            } else {
+                console.log("Wrong!");
+                wrongTally++;
+                console.log("correctTally: " + correctTally);
+                console.log("wrongTally: " + wrongTally);        
+                questionNum++;
+                console.log("questionNum");
+                questionCard(questionNum);
+            }
+    };
+
 
     function gameOver() {
         $("#clock").hide('slow');
-        $("#displayArea").addClass("d-none");
+        $("#displayArea").hide('slow');
+        $("#gameOver").text("Thanks for Playing!");
+        $("#gameOver").addClass("bg-success");
+        $("#gameOver").removeClass("d-none");
+    }
+
+    function timesUp() {
+        $("#clock").hide('slow');
+        $("#displayArea").hide('slow');
+        $("#gameOver").text("Thanks for Playing!");
+        $("#gameOver").addClass("bg-danger");
         $("#gameOver").removeClass("d-none");
     }
     
-    function questionCard() {
-    
-        for (let qObj of questions) {
-
+    function questionCard(arrIndx) {
+        console.log("arrIndx is: " + arrIndx);
+        if (arrIndx <= 9 ) {
+            $("#questions").empty();
             var questionz = $("<div>").addClass("bg-info block mb-1 jeopardyfont fontR text-center");
-            questionz.text(qObj.question);
+            questionz.text(questions[arrIndx].question);
             $("#questions").append(questionz);
-            var preguntas1 = $("<div>").addClass("bg-primary block mb-1  jeopardyfont fontR text-center rounded ansbutton ans1");
+            var preguntas1 = $("<div>").addClass("btn btn-primary btn-lg btn-block jeopardyfont fontR text-center rounded ansbutton ans1");
             $("#questions").append(preguntas1);
-            preguntas1.text(qObj.incorrect_answers[0]);
-            var preguntas2 = $("<div>").addClass("bg-primary block mb-1 jeopardyfont fontR text-center rounded ansbutton ans1");
+            preguntas1.text(questions[arrIndx].incorrect_answers[0]);
+            var preguntas2 = $("<div>").addClass("btn btn-primary btn-lg btn-block jeopardyfont fontR text-center rounded ansbutton ans1");
             $("#questions").append(preguntas2);
-            preguntas2.text(qObj.incorrect_answers[1]);
-            var preguntas3 = $("<div>").addClass("bg-primary block mb-1 jeopardyfont fontR text-center rounded ansbutton ans1");
+            preguntas2.text(questions[arrIndx].incorrect_answers[1]);
+            var preguntas3 = $("<div>").addClass("btn btn-primary btn-lg btn-block jeopardyfont fontR text-center rounded ansbutton ans1");
             $("#questions").append(preguntas3);
-            preguntas3.text(qObj.correct_answer);
-            var preguntas4 = $("<div>").addClass("bg-primary block mb-1 jeopardyfont fontR text-center rounded ansbutton ans1");
+            preguntas3.text(questions[arrIndx].correct_answer);
+            var preguntas4 = $("<div>").addClass("btn btn-primary btn-lg btn-block jeopardyfont fontR text-center rounded ansbutton ans1");
             $("#questions").append(preguntas4);
-            preguntas4.text(qObj.incorrect_answers[2]);
-        
-        };
-    }
+            preguntas4.text(questions[arrIndx].incorrect_answers[2]);
 
-    // startButton();
+            $(".ansbutton").click(function() {
+                var answer = $(this).text();
+                console.log(answer);
+                checkAnswer(answer);
+            });
+        } else {
+            gameOver();
+        }
+    };
 
+    questionCard(questionNum);
+    
     $("#startButton").click(function() {
         console.log("start button clicked");
         startCountdown();
@@ -230,14 +226,7 @@ console.log("correctAns[9] is: " + correctAns[9]);
         $("#startButton").hide('slow');
         // $("#clock").show('slow');
         $("#questions").removeClass('d-none');
-        questionCard();
     });
 
-    $(".ansbutton").click(function() {
-        var answer = $(this).text();
-        console.log("answer clicked: ");
-    });
-
-    rightOrWrong(isRight);
 
 // });
