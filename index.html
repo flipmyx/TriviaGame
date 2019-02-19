@@ -24,9 +24,12 @@
     }
 
     .fontXL {
-        font-size: 6rem;
+        font-size: 5rem;
     }
 
+    /* .navbar {
+        height: 6rem;
+    } */
     </style>
 </head>
 <body>
@@ -34,24 +37,43 @@
 <div class="container">
 
     <div class="row">
-        <div class="col-md-12" style="margin-top: 2rem;">
+        <div class="col-md-12" style="margin-top: 1rem;">
             <div class="container">
-                <h1 class="display-3 text-center barcodefont">Trivi<span style="color: blue;">a</span>ly</h1>
-                <p class="lead jeopardyfont text-center">The trivia game for those who love <span style="color: blue;">JEOPARDY!</span>-ish trivia games!</p>
-                <br>
+                <div class="row logobar d-none">
+                    <div class="bg-light align-middle col-md-3">
+                            <h1 class="barcodefont ">Trivi<span style="color: blue;">a</span>ly</h1>
+                    </div>
+                    <div class="bg-light col-md-3">
+                            <p class="jeopardyfont text-center">Questions Remaining: <p id="qremain" class="jeopardyfont text-center" >10</p></p>
+                    </div>
+                    <div class="bg-light col-md-3">
+                            <p class="jeopardyfont text-center">CORRECT!  <p id="correctDisp" class="jeopardyfont text-center">0</p></p>
+                    </div>
+                    <div class="bg-light col-md-3">
+                            <p class="jeopardyfont text-center">INCORRECT! <p id="incorrectDisp" class="jeopardyfont text-center">0</p></p>
+                    </div>
+                </div>
+                <div id="biglogo">
+                    <h1 class="display-3 text-center barcodefont">Trivi<span style="color: blue;">a</span>ly</h1>
+                    <p class="lead jeopardyfont text-center">The trivia game for those who love <span style="color: blue;">JEOPARDY!</span>-ish trivia games!</p>
+                    <br>
+                </div>
                 <br>
                 <div id="startButton">
                     <button class="btn btn-outline-success btn-lg btn-block barcodefont fontL startbutton" style="padding: 10% 0">LETS GET STARTED</button>
                 </div>
 
                 <div id="displayArea" >
-                    <div id="clock" class="sticky-top bg-dark text-white barcodefont fontL text-center">06-01
+                    <div id="clock" class="sticky-top bg-dark text-white barcodefont fontXL text-center d-none">06-01
                     </div>
                     <div id="questionCard" class="fontL">
                         <div id="questions" class=" d-none"></div>
                     </div>
                 </div>
-                <div id="gameOver" class=" text-white barcodefont fontL jeopardyfont text-center d-none">Times Up!
+                <div id="gameOver" class=" text-white text-center d-none">
+                    <p id="promptz" class="barcodefont fontXL"></p>
+                    <p id="winz" class="jeopardyfont fontR"></p> 
+                    <p id="lozzez" class="jeopardyfont fontR"></p>
                 </div>
             </div>
         </div>
